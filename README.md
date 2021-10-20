@@ -2,7 +2,9 @@
 
 The dataset contains price , year , model , mileage , body type , engine type , engine capacity and current registration status. 
 we start off by importing the data set and viewing it's properties and then we did the following steps to generate a linear regression model. 
+
 A) Preprocessing 
+  
   1. we find the number of null values in our dataset by using dataset.isnull() function and then we drop the rows having the null values. 
 
   2. we begin the preprocessing by looking at the stats available to us using the describe function . 
@@ -12,19 +14,19 @@ A) Preprocessing
   4. we notice that year , Mileage and EngineV has missing values .   
 
   5. we clean the following variables accordingly :
-  a) Mileage : we plot the distplot and see a long time on the right side , hence showing outliers . We drop the outliers by 99 percentile using the quantile method of pandas.
-  b) EngineV : did a basic google search and found that engine capacity is usually below 6.5 and noticed that our dataset has values such as 99.99 showing that many times the user      has mentioned 99.99 whenever EngineV was not available . So , we clean the data by removing all rows that have EngineV above 6.5 . 
-  c) Year : after drawing a distplot of Year variable , we notice that the tail of the graph is on left side showing outliers implying that we had some cars older than 1980 , so     by using the quantile method we kept the 99% of the data and discarded 1% .
+     a) Mileage : we plot the distplot and see a long time on the right side , hence showing outliers . We drop the outliers by 99 percentile using the quantile method of              pandas.
+     b) EngineV : did a basic google search and found that engine capacity is usually below 6.5 and noticed that our dataset has values such as 99.99 showing that many times the        user has mentioned 99.99 whenever EngineV was not available . So , we clean the data by removing all rows that have EngineV above 6.5 . 
+     c) Year : after drawing a distplot of Year variable , we notice that the tail of the graph is on left side showing outliers implying that we had some cars older than 1980 ,         so by using the quantile method we kept the 99% of the data and discarded 1% .
 
   6. in this cleaning process , we deleted around 250 incorrect \ missing entries from the dataset. 
  
 B) Checking the Linear Regression Assumptions :  
   1. For Linearity : 
-    i)after dealing with outliers , we plotted the data points of price with Year , EngineV and Mileage but we could not spot a linear regression on the graph , then we draw a           distplot of the variable "Price" and we see that it's not normally distributed. 
+    i) after dealing with outliers , we plotted the data points of price with Year , EngineV and Mileage but we could not spot a linear regression on the graph , then we draw a           distplot of the variable "Price" and we see that it's not normally distributed. 
     
     ii) so we converted the price to log price .
 
-    iii) When we plotted the graph of log price , with Year , Mileage and EngineV we could spot a linear regression indicating that the data is now clean and ready for next check. 
+    iii) When we plotted the graph of log price , with Year , Mileage and EngineV we could spot a linear regression indicating that the data is now clean and ready for next              check. 
   
   2. No endogeneity : 
     by experience , we can say that this assumption is not violated , but we will still check it after creating the regression. 
